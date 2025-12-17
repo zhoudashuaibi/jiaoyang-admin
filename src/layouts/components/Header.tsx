@@ -1,22 +1,22 @@
 import reactLogo from "@/assets/react.svg";
 import useUserStore from "@/store/modules/user";
-import { Avatar } from 'antd';
-import { Dropdown } from 'antd';
-import type { MenuProps } from 'antd/es/menu';
+import { Avatar } from "antd";
+import { Dropdown } from "antd";
+import type { MenuProps } from "antd/es/menu";
 
 export default function ComHeader() {
   const userStore = useUserStore();
   const { userInfo } = userStore;
 
-  const handleClickFn: MenuProps['onClick'] = ({ key }) => {
+  const handleClickFn: MenuProps["onClick"] = ({ key }) => {
     switch (key) {
-      case 'logout':
+      case "logout":
         userStore.logout();
         break;
       default:
         break;
     }
-  }
+  };
 
   return (
     <div className="flex items-center justify-between h-full">
@@ -30,18 +30,16 @@ export default function ComHeader() {
           menu={{
             items: [
               {
-                label: '退出登录',
-                key: 'logout',
+                label: "退出登录",
+                key: "logout",
               },
             ],
-            onClick: handleClickFn
+            onClick: handleClickFn,
           }}
         >
           <div className="flex items-center cursor-pointer hover:bg-gray-100 rounded-md px-2 py-1">
             <Avatar size={30} src={userInfo?.avatar || ""} />
-            <div className="text-sm">
-              {userInfo?.username || "未知用户"}
-            </div>
+            <div className="text-sm">{userInfo?.name || "未知用户"}</div>
           </div>
         </Dropdown>
       </div>

@@ -1,19 +1,16 @@
-import { create } from 'zustand'
-import { persist, devtools } from 'zustand/middleware'
-import type { UserInfo } from '@/types/user'
-import { redirect } from 'react-router-dom'
-
-
+import { create } from "zustand";
+import { persist, devtools } from "zustand/middleware";
+import type { UserInfo } from "@/types/user";
 
 interface UserState {
-  userInfo: UserInfo
-  token: string
+  userInfo: UserInfo;
+  token: string;
 }
 
 interface UserActions {
-  setUserInfo: (userInfo: UserInfo) => void
-  setToken: (token: string) => void
-  logout: () => void
+  setUserInfo: (userInfo: UserInfo) => void;
+  setToken: (token: string) => void;
+  logout: () => void;
 }
 
 const useUserStore = create<UserState & UserActions>()(
@@ -22,32 +19,39 @@ const useUserStore = create<UserState & UserActions>()(
       (set) => ({
         userInfo: {
           id: 0,
-          username: '',
-          role: [],
-          avatar: '',
+          name: "",
+          account: "",
+          avatar: "",
+          phone: "",
+          email: "",
+          create_time: "",
+          update_time: "",
         },
-        token: '123123',
+        token: "",
         setUserInfo: (userInfo) => set({ userInfo }),
         setToken: (token) => set({ token }),
         logout: () => {
           set({
             userInfo: {
               id: 0,
-              username: '',
-              role: [],
-              avatar: '',
+              name: "",
+              account: "",
+              avatar: "",
+              phone: "",
+              email: "",
+              create_time: "",
+              update_time: "",
             },
-            token: ''
-          })
-          window.location.href = '/login'
-        }
+            token: "",
+          });
+
+        },
       }),
       {
-        name: 'user-storage',
+        name: "user-storage",
       }
-    ),
-    { name: 'UserStore' }
+    )
   )
-)
+);
 
-export default useUserStore
+export default useUserStore;

@@ -15,7 +15,6 @@ const headerStyle = {
   backgroundColor: "#fff",
   padding: "0 20px",
   borderBottom: "1px solid #e8e8e8",
-
 };
 
 export default function BaseLayout() {
@@ -30,8 +29,10 @@ export default function BaseLayout() {
             <ComSlider />
           </Sider>
           <Content>
-            <Layout>
-              <Outlet />
+            <Layout style={{ padding: 15, margin: 0 }}>
+              <div className="bg-white rounded-md p-4">
+                <Outlet />
+              </div>
             </Layout>
           </Content>
         </Layout>

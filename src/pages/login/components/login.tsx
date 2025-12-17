@@ -9,13 +9,17 @@ type FieldType = {
   password?: string;
 };
 
+import useUserStore from "@/store/modules/user";
+
 const LoginForm: React.FC = () => {
   const navigate = useNavigate();
+  const userStore = useUserStore();
   const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
-    await login({
+    const { token } = await login({
       account: values.account || "",
       password: values.password || "",
     });
+    userStore.setToken(token);
     navigate("/");
   };
   return (

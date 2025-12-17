@@ -4,26 +4,32 @@ import { convertRoutes } from "./generate";
 import NotFound404 from "@/pages/404";
 import NotFound403 from "@/pages/403";
 import Login from "@/pages/login";
+import AuthGuard from "./authGuard";
 
 export default function Router() {
   const finalRoutes = convertRoutes(routes);
+
   return useRoutes([
-    ...finalRoutes,
     {
-      path: 'login',
-      element: <Login />
+      path: "/",
+      element: <AuthGuard />,
+      children: finalRoutes,
     },
     {
-      path: '403',
-      element: <NotFound403 />
+      path: "login",
+      element: <Login />,
     },
     {
-      path: '404',
-      element: <NotFound404 />
+      path: "403",
+      element: <NotFound403 />,
     },
     {
-      path: '*',
-      element: <Navigate to="/404" replace />
-    }
+      path: "404",
+      element: <NotFound404 />,
+    },
+    {
+      path: "*",
+      element: <Navigate to="/404" replace />,
+    },
   ]);
 }

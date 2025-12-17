@@ -4,8 +4,8 @@ import type { AxiosRequestConfig } from "axios";
 import { setupInterceptors } from "./interceptors";
 
 const instance = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE+'/admin-api',
-  timeout: 10000
+  baseURL: import.meta.env.VITE_API_BASE,
+  timeout: 10000,
 });
 
 // 注册拦截器

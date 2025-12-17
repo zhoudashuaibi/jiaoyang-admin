@@ -3,6 +3,7 @@ import type { RouteObject } from "react-router-dom";
 import BaseLayout from "@/layouts";
 import Dashboard from "@/pages/dashboard";
 import HousePage from "@/pages/house";
+import User from "@/pages/user";
 
 export type AppRouteObject = RouteObject & {
   name?: string;
@@ -35,6 +36,7 @@ export const routes: AppRouteObject[] = [
       {
         path: "house",
         name: "HouseManagement",
+        icon: "HomeOutlined",
         meta: {
           title: "房源管理",
         },
@@ -45,6 +47,24 @@ export const routes: AppRouteObject[] = [
             name: "HouseList",
             meta: {
               title: "房源列表",
+            },
+          },
+        ],
+      },
+      {
+        path: "user",
+        name: "User",
+        meta: {
+          title: "个人中心",
+        },
+        icon: "UserOutlined",
+        children: [
+          {
+            path: "info",
+            component: User,
+            name: "UserInfo",
+            meta: {
+              title: "个人信息",
             },
           },
         ],

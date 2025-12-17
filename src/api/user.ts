@@ -4,7 +4,7 @@ import type { UserInfo } from "@/types/user.d";
 // 登录
 export const login = (data: { account: string; password: string }) => {
   return request({
-    url: "/user/login",
+    url: "/auth/login",
     method: "post",
     data,
   });
@@ -17,7 +17,7 @@ export const register = (data: {
   confirm_password: string;
 }) => {
   return request({
-    url: "/user/register",
+    url: "/auth/register",
     method: "post",
     data,
   });
@@ -26,14 +26,14 @@ export const register = (data: {
 //退出登录
 export const logout = () => {
   return request({
-    url: "/user/logout",
+    url: "/auth/logout",
     method: "post",
   });
 };
 
 // 获取用户信息
 export const GetUserInfo = () => {
-  return request<{ user_info: UserInfo }>({
+  return request<UserInfo>({
     url: "/user/info",
     method: "get",
   });
