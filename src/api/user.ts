@@ -48,7 +48,7 @@ export interface updateInfo {
 export const UpdateUserInfo = (data: updateInfo) => {
   return request({
     url: "/user/update",
-    method: "put",
+    method: "patch",
     data,
   });
 };

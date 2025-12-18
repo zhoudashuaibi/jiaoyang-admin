@@ -4,6 +4,7 @@ import BaseLayout from "@/layouts";
 import Dashboard from "@/pages/dashboard";
 import HousePage from "@/pages/house";
 import User from "@/pages/user";
+import Category from "@/pages/category";
 
 export type AppRouteObject = RouteObject & {
   name?: string;
@@ -47,6 +48,24 @@ export const routes: AppRouteObject[] = [
             name: "HouseList",
             meta: {
               title: "房源列表",
+            },
+          },
+        ],
+      },
+      {
+        path: "category",
+        name: "Category",
+        meta: {
+          title: "分类管理",
+        },
+        icon: "GroupOutlined",
+        children: [
+          {
+            path: "list",
+            component: Category,
+            name: "CategoryList",
+            meta: {
+              title: "分类列表",
             },
           },
         ],
