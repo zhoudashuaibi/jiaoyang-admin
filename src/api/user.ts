@@ -38,3 +38,17 @@ export const GetUserInfo = () => {
     method: "get",
   });
 };
+
+export interface updateInfo {
+  name: string;
+  email: string;
+  phone: string;
+}
+// 更新用户信息
+export const UpdateUserInfo = (data: updateInfo) => {
+  return request({
+    url: "/user/update",
+    method: "put",
+    data,
+  });
+};
